@@ -89,13 +89,13 @@ jobs:
           IMAGE_TAG: latest
           REGISTRY: 468209441303.dkr.ecr.us-east-1.amazonaws.com
         run: |
-          docker build --build-arg REACT_APP_MOVIE_API_URL=a9996958a2f264ff09b3e12b9bd24233-130397018.us-east-1.elb.amazonaws.com --tag $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker build --build-arg REACT_APP_MOVIE_API_URL=http://a7ec6d8826dcd46f6a418568070f972f-1815476115.us-east-1.elb.amazonaws.com --tag $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push 468209441303.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY:$IMAGE_TAG
         working-directory: starter/frontend
 
       - name: Configure kubectl to use EKS cluster
         run: |
-          aws eks --region us-east-1 update-kubeconfig --name Cluster
+          aws eks --region us-east-1 update-kubeconfig --name cluster
 
       - name: Deploy Docker
         working-directory: starter/frontend/k8s
