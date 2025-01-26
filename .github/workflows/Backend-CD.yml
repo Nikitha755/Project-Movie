@@ -103,7 +103,7 @@ jobs:
 
       - name: Configure kubectl to use EKS cluster
         run: |
-          aws eks --region us-east-1 update-kubeconfig --name Cluster
+          aws eks --region us-east-1 update-kubeconfig --name cluster
 
       - name: Deploy to Kubernetes
         env:
